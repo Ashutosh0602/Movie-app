@@ -11,6 +11,8 @@ import {
 import React from "react";
 import { styles } from "../theme/index";
 import { useNavigation } from "@react-navigation/native";
+import { fallbackMoviePoster, image185, image342 } from "../api/MovieDB";
+
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 const { width, height } = Dimensions.get("window");
 
@@ -40,14 +42,16 @@ const MovieList = ({ title, data }: any) => {
             >
               <View className="space-y-1 mr-4">
                 <Image
-                  source={require("../assets/images/moviePoster2.png")}
-                  //   source={{uri: image185(item.poster_path) || fallbackMoviePoster}}
+                  // source={require("../assets/images/moviePoster2.png")}
+                  source={{
+                    uri: image185(item.poster_path) || fallbackMoviePoster,
+                  }}
                   className="rounded-3xl"
                   style={{ width: width * 0.33, height: height * 0.22 }}
                 />
                 <Text className="text-neutral-300 ml-1">
-                  {item.title.length > 14
-                    ? item?.title.slice(0, 14) + "..."
+                  {item?.title?.length > 14
+                    ? item?.title?.slice(0, 14) + "..."
                     : item?.title}
                 </Text>
               </View>
@@ -60,7 +64,3 @@ const MovieList = ({ title, data }: any) => {
 };
 
 export default MovieList;
-
-// const styles = StyleSheet.create({
-
-// });

@@ -10,7 +10,9 @@ import Carousel from "react-native-snap-carousel";
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import img from "../assets/images/moviePoster1.png";
+import { image500 } from "../api/MovieDB";
 import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 var { width, height } = Dimensions.get("window");
 
@@ -18,21 +20,20 @@ const MovieCard = ({ item, handleClick }: any) => {
   return (
     <TouchableWithoutFeedback onPress={handleClick}>
       <Image
-        source={img}
-        // source={{uri: image500(item.poster_path)}}
+        // source={img}
+        source={{ uri: image500(item.poster_path) }}
         style={{
           width: width * 0.6,
           height: height * 0.4,
           borderRadius: 15,
         }}
-        // className="rounded-3xl"
       />
     </TouchableWithoutFeedback>
   );
 };
 
 export default function TrendingMovies({ data }: any): JSX.Element {
-  const navigation: any = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const handleClick = () => {
     navigation.navigate("Movie", item);

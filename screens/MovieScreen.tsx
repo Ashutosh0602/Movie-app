@@ -30,9 +30,9 @@ const topMargin = ios ? "" : " mt-3";
 var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
-  const { params: item } = useRoute();
+  const { params: item }: any = useRoute();
   const navigation = useNavigation();
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie]: any = useState({});
   const [cast, setCast] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [isFavourite, toggleFavourite] = useState(false);
@@ -40,9 +40,9 @@ export default function MovieScreen() {
 
   useEffect(() => {
     setLoading(true);
-    getMovieDetials(item!.id);
-    getMovieCredits(item!.id);
-    getSimilarMovies(item!.id);
+    getMovieDetials(item?.id);
+    getMovieCredits(item?.id);
+    getSimilarMovies(item?.id);
   }, [item]);
 
   const getMovieDetials = async (id: any) => {
@@ -139,7 +139,7 @@ export default function MovieScreen() {
 
         {/* genres  */}
         <View className="flex-row justify-center mx-4 space-x-2">
-          {movie?.genres?.map((genre, index) => {
+          {movie?.genres?.map((genre: any, index: any) => {
             let showDot = index + 1 != movie.genres.length;
             return (
               <Text

@@ -29,10 +29,10 @@ const verticalMargin = ios ? "" : " my-3";
 var { width, height } = Dimensions.get("window");
 
 export default function PersonScreen() {
-  const { params: item } = useRoute();
+  const { params: item }: any = useRoute();
   const [isFavourite, toggleFavourite] = useState(false);
   const navigation = useNavigation();
-  const [person, setPerson] = useState({});
+  const [person, setPerson]: any = useState({});
   const [personMovies, setPersonMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -42,7 +42,7 @@ export default function PersonScreen() {
     getPersonMovies(item.id);
   }, [item]);
 
-  const getPersonDetails = async (id) => {
+  const getPersonDetails = async (id: any) => {
     const data = await fetchPersonDetails(id);
     console.log("got person details");
     setLoading(false);
@@ -50,7 +50,7 @@ export default function PersonScreen() {
       setPerson(data);
     }
   };
-  const getPersonMovies = async (id) => {
+  const getPersonMovies = async (id: any) => {
     const data = await fetchPersonMovies(id);
     console.log("got person movies");
     if (data && data.cast) {

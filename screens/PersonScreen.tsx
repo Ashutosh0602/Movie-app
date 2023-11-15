@@ -29,10 +29,10 @@ const verticalMargin = ios ? "" : " my-3";
 var { width, height } = Dimensions.get("window");
 
 export default function PersonScreen() {
-  const { params: item } = useRoute();
+  const { params: item }: any = useRoute();
   const [isFavourite, toggleFavourite] = useState(false);
   const navigation = useNavigation();
-  const [person, setPerson] = useState({});
+  const [person, setPerson]: any = useState({});
   const [personMovies, setPersonMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
