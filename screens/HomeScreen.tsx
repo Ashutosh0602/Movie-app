@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  StyleSheet,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -65,8 +66,10 @@ export default function HomeScreen(): JSX.Element {
         <View className="flex-row justify-between items-center mx-4">
           <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" />
           <Text className="text-white text-3xl font-bold">
-            <Text style={styles.text}>M</Text>ovies
+            <Text style={styles.text}>Flick</Text>
+            Hub
           </Text>
+
           <TouchableOpacity onPress={() => navigation.navigate("Search")}>
             <MagnifyingGlassIcon size="30" strokeWidth={2} color="white" />
           </TouchableOpacity>
@@ -79,15 +82,12 @@ export default function HomeScreen(): JSX.Element {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 10 }}
         >
-          {/* Trending Movies Carousel */}
           {trending.length > 0 && <TrendingMovies data={trending} />}
 
-          {/* upcoming movies row */}
           {upcoming.length > 0 && (
             <MovieList title="Upcoming" data={upcoming} />
           )}
 
-          {/* top rated movies row */}
           {topRated.length > 0 && (
             <MovieList title="Top Rated" data={topRated} />
           )}
@@ -97,4 +97,22 @@ export default function HomeScreen(): JSX.Element {
   );
 }
 
-// const style = StyleSheet.create({});
+const style: any = StyleSheet.create({
+  linearGradient: {
+    height: 250,
+    width: 200,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
+    justifyContent: "center",
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: "Gill Sans",
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+    color: "#ffffff",
+    backgroundColor: "transparent",
+  },
+});
